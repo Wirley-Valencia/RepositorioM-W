@@ -1,0 +1,49 @@
+{% extends './layout.html' %}
+
+
+{% block body %}
+
+<h3><p>Ingreso de nuevos cursos</p></h3>
+
+<form action="{{url_for('add_cursos')}}" method="post">
+    <label for="Name">Código del Curso</label><br>
+    <input type="text" name="codigo" id="" size="5"><br><br>
+    <label for="Name">Nombre del Curso</label><br>
+    <input type="text" name="nombre" id="" placeholder="Ingrese nombre del curso"><br><br>
+    <label for="Name">Número de horas del curso</label><br>
+    <input type="text" name="horas" id=""  size="5"> <br><br>  
+    <label for="Name">Area de conocimiento</label><br>
+    <input type="text" name="area" id=""><br><br>
+    <button>Agregar curso</button>
+</form>
+<p></p>
+<h1>Tabla de Cursos</h1>
+
+<table>
+    <thead>
+        <tr>
+          <th>Codigo Curso</th>
+          <th>Nombre Curso</th>
+          <th>No. de horas</th>
+          <th>Area de formación</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for curso in cursos %}
+        <tr>
+            <td> {{ curso.1 }}</td>
+            <td> {{ curso.2 }}</td>
+            <td> {{ curso.3 }}</td>
+            <td> {{ curso.4 }}</td>
+            <td><a href="/edit/{{curso.0}}">Edit</a></td>
+            <td><a href="/delete/{{curso.0}}">Delete</a></td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+</table>
+
+
+{% endblock %}
